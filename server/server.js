@@ -1,8 +1,10 @@
-const PORT = 3279;
+const env = process.env.NODE_ENV || 'development';
 
+const config = require('./config/environment')[env];
+require('./config/database')();
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
-const graphqlSchema = require('./schema/schema');
+const graphqlSchema = require('./graphqlSchema/schema');
 
 const app = express();
 
@@ -12,4 +14,4 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true        // this property will open the graphql playground, when we go to the /graphql url
 }));
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}...`))
+app.listen(config.port, () => console.log(`Listening on port ${config.port}...`))

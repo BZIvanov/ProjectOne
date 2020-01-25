@@ -7,8 +7,10 @@ const {
   GraphQLInt,
   GraphQLList,
 } = graphql;
+const Movie = require('../models/movie');
+const Actor = require('../models/actor');
 
-// TODO implement database and remove dummy data
+// TODO get data from database and remove dummy data
 const movies = [
   {id: '1', name: 'Fun movie', year: 2016, actorID: '2'},
   {id: '2', name: 'Scary movie', year: 2018, actorID: '1'},
