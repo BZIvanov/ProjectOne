@@ -6,25 +6,10 @@ const {
   GraphQLString,
   GraphQLInt,
   GraphQLList,
+  GraphQLNonNull
 } = graphql;
 const Movie = require('../models/movie');
 const Actor = require('../models/actor');
-
-// TODO get data from database and remove dummy data
-const movies = [
-  {id: '1', name: 'Fun movie', year: 2016, actorID: '2'},
-  {id: '2', name: 'Scary movie', year: 2018, actorID: '1'},
-  {id: '3', name: 'Fun Series', year: 2015, actorID: '3'},
-  {id: '4', name: 'Action movie', year: 2019, actorID: '2'},
-  {id: '5', name: 'Animal movie', year: 2010, actorID: '5'}
-];
-const actors = [
-  {id: '1', name: 'Ema Stone', age: 22},
-  {id: '2', name: 'Ivan Petrov', age: 33},
-  {id: '3', name: 'Kelly R', age: 31},
-  {id: '4', name: 'Marc David', age: 21},
-  {id: '5', name: 'Katherine Dewmon', age: 27}
-];
 
 const MovieType = new GraphQLObjectType({
   name: 'Movie',
@@ -36,7 +21,7 @@ const MovieType = new GraphQLObjectType({
     mainActor: {
       type: ActorType,
       resolve(parent, args) {
-        return actors.filter(actor => parent.actorID === actor.id)[0];
+        return Actor.findById(parent.actorID)
       }
     }
   })
@@ -52,7 +37,7 @@ const ActorType = new GraphQLObjectType({
     movies: {
       type: new GraphQLList(MovieType),
       resolve(parent, args) {
-        return movies.filter(movie => parent.id === movie.actorID);
+        return Movie.find({ actorID: parent.id })   // actorID here is from the Model based on which we filter
       }
     }
   })
@@ -66,31 +51,69 @@ const RootQuery = new GraphQLObjectType({
       type: MovieType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
-        return movies.filter(movie => movie.id === args.id)[0];
+        return Movie.findById(args.id);
       }
     },
     actor: {
       type: ActorType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
-        return actors.filter(actor => actor.id === args.id)[0];
+        return Actor.findById(args.id);
       }
     },
     movies: {
       type: GraphQLList(MovieType),
       resolve(parent, args) {
-        return movies;
+        return Movie.find({});
       }
     },
     actors: {
       type: GraphQLList(ActorType),
       resolve(parent, args) {
-        return actors;
+        return Actor.find({});
       }
     }
   }
 });
 
+const RootMutation = new GraphQLObjectType({
+  name: 'RootMutationType',
+  description: 'Pick a mutation type',
+  fields: {
+    addMovie: {
+      type: MovieType,
+      args: {
+        name: { type: new GraphQLNonNull(GraphQLString) },   // with GraphQlNonNull we make the name required
+        year: { type: GraphQLInt },
+        actorID: { type: GraphQLID }
+      },
+      resolve(parent, args) {
+        const movie = new Movie({
+          name: args.name,
+          year: args.year,
+          actorID: args.actorID
+        });
+        return movie.save();      // here we use return to get the data from creation in the graphql playground
+      }
+    },
+    addActor: {
+      type: ActorType,
+      args: {
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        age: { type: GraphQLInt }
+      },
+      resolve(parent, args) {
+        const actor = new Actor({
+          name: args.name,
+          age: args.age
+        });
+        return actor.save();
+      }
+    }
+  }
+})
+
 module.exports = new GraphQLSchema({
-  query: RootQuery
+  query: RootQuery,
+  mutation: RootMutation
 });
