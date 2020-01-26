@@ -5,8 +5,11 @@ require('./config/database')();
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const graphqlSchema = require('./graphqlSchema/schema');
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors());
 
 // on the below route is where all the graphql requests will be handled. And here we will provide the schema.
 app.use('/graphql', graphqlHTTP({
