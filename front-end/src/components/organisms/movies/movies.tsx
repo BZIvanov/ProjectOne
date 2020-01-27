@@ -28,7 +28,7 @@ const Movies: React.FC = () => {
   
   return (
     <>
-      <h1>My Movies</h1>
+      <h1>My Movies List</h1>
       {loading ? null :
         data.movies.map((movie: Movie) => <div key={movie.id}>{movie.name}</div>)
       }
