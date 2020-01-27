@@ -2,6 +2,8 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import './movies.css';
+import Loading from '../../atoms/loading/loading';
+import Movie from '../../molecules/movie/movie';
 
 const MOVIES = gql`
   {
@@ -13,7 +15,7 @@ const MOVIES = gql`
   }
 `;
 
-interface Movie {
+interface MovieFields {
   id: string;
   name: string;
   year: number;
@@ -29,8 +31,8 @@ const Movies: React.FC = () => {
   return (
     <>
       <h1>My Movies List</h1>
-      {loading ? null :
-        data.movies.map((movie: Movie) => <div key={movie.id}>{movie.name}</div>)
+      {loading ? <Loading /> :
+        data.movies.map((movie: MovieFields) => <Movie key={movie.id} movie={movie} />)
       }
     </>
   )
