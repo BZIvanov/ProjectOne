@@ -1,13 +1,15 @@
 import React from 'react';
-import './loading.css';
+import { useStyles } from "./styles";
 
 const Loading: React.FC = () => {
+  const classes = useStyles();
+  
   return (
-    <div className="spinner">
-      <div className="spinner-text">Loading</div>
-      <div className="spinner-sector spinner-sector-red"></div>
-      <div className="spinner-sector spinner-sector-blue"></div>
-      <div className="spinner-sector spinner-sector-green"></div>
+    <div className={classes.spinner}>
+      <div className={classes.spinnerText}>Loading</div>
+      <div className={`${classes.spinnerSector} ${classes.spinnerSectorRed}`}></div>
+      <div className={`${classes.spinnerSector} ${classes.spinnerSectorBlue}`}></div>
+      <div className={`${classes.spinnerSector} ${classes.spinnerSectorGreen}`}></div>
     </div>
   )
 }
