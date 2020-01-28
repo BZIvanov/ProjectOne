@@ -11,6 +11,7 @@ const MOVIES = gql`
       id
       name
       year
+      imageUrl
     }
   }
 `;
@@ -19,6 +20,7 @@ interface MovieFields {
   id: string;
   name: string;
   year: number;
+  imageUrl: string;
 }
 
 const Movies: React.FC = () => {

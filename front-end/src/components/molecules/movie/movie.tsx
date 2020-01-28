@@ -4,12 +4,17 @@ interface Movie {
   movie: {
     name: string;
     year: number;
+    imageUrl?: string;
   }
 }
 
-const Movie: React.FC<Movie> = (props) => {
+const Movie: React.FC<Movie> = ({movie}) => {
   return (
-    <h1>{props.movie.name}</h1>
+    <>
+      <h1>{movie.name}</h1>
+      <p>{movie.year}</p>
+      <img src={movie.imageUrl} alt={movie.name}/>
+    </>
   )
 };
 
