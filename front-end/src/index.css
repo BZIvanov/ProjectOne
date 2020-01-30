@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Kalam:300,400,700&display=swap');
 
+/* TODO: Create custom Theme, Material UI overwritten these styles */
 body {
-  margin: 0;
   font-family: 'Kalam', cursive;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }

@@ -1,8 +1,9 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
-export const useStyles = makeStyles({
+export const useStyles = makeStyles((theme: Theme) => createStyles({
   tileContent: {
     display: 'flex',
+    color: theme.palette.secondary.dark,
     flexDirection: 'column',
     justifyContent: 'space-around',
     '& img': {
@@ -10,4 +11,4 @@ export const useStyles = makeStyles({
       width: '100%'
     },
   },
-});
+}));
