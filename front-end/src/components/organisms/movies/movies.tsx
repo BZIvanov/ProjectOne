@@ -12,6 +12,7 @@ const MOVIES = gql`
       id
       name
       year
+      description
       imageUrl
     }
   }
@@ -21,6 +22,7 @@ interface MovieFields {
   id: string;
   name: string;
   year: number;
+  description: string;
   imageUrl: string;
 }
 
@@ -35,13 +37,11 @@ const Movies: React.FC = () => {
   return (
     <>
       <h1>My Movies List</h1>
-      <div className={classes.root}>
-        <GridList cellHeight={260} cols={3}>
-          {loading ? <Loading /> :
-            data.movies.map((movie: MovieFields) => <Movie key={movie.id}  movie={movie} />)
-          }
-        </GridList>
-      </div>
+      <GridList cellHeight='auto' cols={3} className={classes.root}>
+        {loading ? <Loading /> :
+          data.movies.map((movie: MovieFields) => <Movie key={movie.id}  movie={movie} />)
+        }
+      </GridList>
     </>
   )
 }

@@ -19,6 +19,7 @@ const MovieType = new GraphQLObjectType({
     name: { type: GraphQLString },
     year: { type: GraphQLInt },
     imageUrl: { type: GraphQLString },
+    description: { type: GraphQLString },
     mainActor: {
       type: ActorType,
       resolve(parent, args) {
@@ -87,6 +88,7 @@ const RootMutation = new GraphQLObjectType({
         name: { type: new GraphQLNonNull(GraphQLString) },   // with GraphQlNonNull we make the name required
         year: { type: GraphQLInt },
         imageUrl: { type: GraphQLString },
+        description: { type: GraphQLString },
         actorID: { type: GraphQLID }
       },
       resolve(parent, args) {
@@ -94,6 +96,7 @@ const RootMutation = new GraphQLObjectType({
           name: args.name,
           year: args.year,
           imageUrl: args.imageUrl,
+          description: args.description,
           actorID: args.actorID
         });
         return movie.save();      // here we use return to get the data from creation in the graphql playground

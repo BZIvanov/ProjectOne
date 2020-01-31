@@ -1,14 +1,30 @@
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { red } from '@material-ui/core/colors';
 
 export const useStyles = makeStyles((theme: Theme) => createStyles({
-  tileContent: {
+  wrapper: {
     display: 'flex',
-    color: theme.palette.secondary.dark,
     flexDirection: 'column',
-    justifyContent: 'space-around',
-    '& img': {
-      display: 'block',
-      width: '100%'
-    },
+    alignItems: 'center'
+  },
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
+  avatar: {
+    backgroundColor: red[500],
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
   },
 }));
