@@ -74,7 +74,7 @@ const Movie: React.FC<Movie> = ({ movie, style }) => {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Preview:</Typography>
-          <iframe src="https://www.youtube.com/embed/HhjHYkPQ8F0?controls=1" allowFullScreen />
+          <iframe src="https://www.youtube.com/embed/HhjHYkPQ8F0?controls=1" allowFullScreen title={movie.name} />
         </CardContent>
       </Collapse>
       </Card>

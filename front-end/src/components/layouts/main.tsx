@@ -1,14 +1,15 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
+import Header from '../organisms/header/header';
 import Movies from '../organisms/movies/movies';
 
-const HomePage: React.FC = () => {
+const Main: React.FC = () => {
   return (
     <Container>
-      <h1>Hello This is my navigation</h1>
+      <Header />
       <Movies />
     </Container>
   )
 }
 
-export default HomePage;
+export default Main;
