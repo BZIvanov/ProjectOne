@@ -1,18 +1,15 @@
-const express = require('express'); //
-const graphqlHTTP = require('express-graphql');
-const graphqlSchema = require('./graphqlSchema/schema');
-const cors = require('cors');
+const express = require('express');
+const { ApolloServer } = require('apollo-server-express');
 
-const app = express(); //
+const { typeDefs } = require('./schema');
+const { resolvers } = require('./resolvers');
 
-app.use(cors());
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
 
-app.use(
-  '/graphql',
-  graphqlHTTP({
-    schema: graphqlSchema,
-    graphiql: true,
-  })
-);
+const app = express();
+server.applyMiddleware({ app });
 
-module.exports = app; //
+module.exports = app;
