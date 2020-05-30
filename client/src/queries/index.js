@@ -2,9 +2,12 @@ import { gql } from 'apollo-boost';
 
 export const GET_ALL_MOVIES = gql`
   query {
-    getAllMovies {
-      title
-      year
+    movies {
+      name
+      releaseYear
+      imageUrl
+      description
+      id
     }
   }
 `;

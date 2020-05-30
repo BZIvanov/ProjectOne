@@ -6,7 +6,6 @@ const ButtonCss = styled.button`
 `;
 
 const Button = () => {
-  console.log('here');
   return <ButtonCss>Hello</ButtonCss>;
 };
 

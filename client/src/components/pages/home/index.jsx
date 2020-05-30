@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button } from '../../atoms';
+import { MoviesList } from '../../organisms';
 
 const Home = () => {
   return (
     <div>
-      <Button />
+      <MoviesList />
     </div>
   );
 };
