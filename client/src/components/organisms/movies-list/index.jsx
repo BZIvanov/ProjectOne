@@ -4,7 +4,7 @@ import { GET_ALL_MOVIES } from '../../../queries';
 
 const MoviesList = () => {
   const { loading, error, data } = useQuery(GET_ALL_MOVIES);
-  console.log(loading);
+  console.log(data);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
