@@ -1,5 +1,6 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
+const User = require('./models/user');
 const Movie = require('./models/movie');
 
 const { typeDefs } = require('./schema');
@@ -13,6 +14,7 @@ const server = new ApolloServer({
     Mutation,
   },
   context: {
+    User,
     Movie,
   },
 });
