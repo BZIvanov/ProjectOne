@@ -10,7 +10,9 @@ const Signup = () => {
 
   const handleFormSubmit = (data) => {
     const { username, email, password } = data;
-    signupUser({ variables: { username, email, password } });
+    signupUser({ variables: { username, email, password } }).then((data) => {
+      localStorage.setItem('token', data.data.signup.token);
+    });
   };
 
   return (

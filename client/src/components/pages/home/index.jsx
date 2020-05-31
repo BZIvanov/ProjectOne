@@ -1,5 +1,5 @@
 import React from 'react';
-import { MoviesList, Signup } from '../../organisms';
+import { MoviesList, Signup, Signin } from '../../organisms';
 import { TextInput, Button, TextWarning } from '../../atoms';
 
 const Home = () => {
@@ -9,7 +9,7 @@ const Home = () => {
       <TextInput placeholder="Username" />
       <Button>Hello</Button>
       <TextWarning>Nice</TextWarning>
-      <Signup />
+      <Signin />
     </div>
   );
 };
