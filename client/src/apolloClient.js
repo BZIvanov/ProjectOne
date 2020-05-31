@@ -8,7 +8,7 @@ export default new ApolloClient({
   request: (operation) => {
     operation.setContext({
       headers: {
-        Authorization: `bearer ${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     });
   },
