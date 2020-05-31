@@ -20,8 +20,8 @@ const InputCss = styled.input`
   }
 `;
 
-const TextInput = (props) => {
-  return <InputCss type="text" {...props} />;
-};
+const TextInput = React.forwardRef((props, ref) => {
+  return <InputCss ref={ref} type="text" {...props} />;
+});
 
 export default TextInput;

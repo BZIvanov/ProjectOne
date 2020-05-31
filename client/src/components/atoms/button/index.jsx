@@ -15,8 +15,8 @@ const ButtonCss = styled.button`
   }
 `;
 
-const Button = ({ children }) => {
-  return <ButtonCss>{children}</ButtonCss>;
+const Button = ({ children, ...rest }) => {
+  return <ButtonCss {...rest}>{children}</ButtonCss>;
 };
 
 export default Button;

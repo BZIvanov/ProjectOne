@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { GET_ALL_MOVIES } from '../../../queries';
+import { GET_ALL_MOVIES } from './gql';
 
 const MoviesList = () => {
   const { loading, error, data } = useQuery(GET_ALL_MOVIES);
