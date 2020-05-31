@@ -14,6 +14,17 @@ module.exports = {
 
     return { token, username: newUser.username, email: newUser.email };
   },
+  signin: async (parent, args, { User }, info) => {
+    const { email, password } = args.data;
+    const user = await User.findOne({ email }).select('+password');
+
+    if (!user || !(await user.isPasswordCorrect(password, user.password))) {
+      throw new Error('Incorrect email or password');
+    }
+
+    const token = createToken(user.id);
+    return { token, username: user.username, email: user.email };
+  },
   addMovie: async (parent, args, { Movie }, info) => {
     const movie = await Movie.create(args.data);
     return movie;

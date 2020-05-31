@@ -1,13 +1,10 @@
 ## Working with the server
 
-To run the server type **npm run dev** as specified in the package.json file. Respectively to stop the server use **ctrl + c** in the terminal.
-
-The GraphQL playground is accessible at *http://localhost:3279/graphql*
-
+TODO: Rework this file
 
 ### Experienced issues
 
-1. TypeScript complains with import React after installing *react-router-dom*.
+1. TypeScript complains with import React after installing _react-router-dom_.
 
 **Fix:** delete node_modules folder and package-lock.json file and then install them back again.
 
@@ -16,5 +13,5 @@ The GraphQL playground is accessible at *http://localhost:3279/graphql*
 **Fix:** in the child Material UI element spread them from the props like below:
 
 ```javascript
-<GridListTile style={{...props.style}} ></GridListTile>
+<GridListTile style={{ ...props.style }}></GridListTile>
 ```

@@ -7,7 +7,8 @@ exports.typeDefs = gql`
 
   type Mutation {
     addMovie(data: CreateMovieInput!): Movie!
-    signup(data: UserInput): User!
+    signup(data: SignupUserInput): User!
+    signin(data: SigninUserInput): User!
   }
 
   type Movie {
@@ -31,8 +32,13 @@ exports.typeDefs = gql`
     description: String
   }
 
-  input UserInput {
+  input SignupUserInput {
     username: String!
+    email: String!
+    password: String!
+  }
+
+  input SigninUserInput {
     email: String!
     password: String!
   }
