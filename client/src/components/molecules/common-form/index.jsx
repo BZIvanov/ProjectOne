@@ -1,15 +1,15 @@
 import React from 'react';
-import { Heading, TextInput, TextWarning, Button } from '../../atoms';
+import { TextInput, TextWarning, Button, FormGroup } from '../../atoms';
 import { useForm } from 'react-hook-form';
 
 const CommonForm = (props) => {
-  const { onFormSubmit, formBuilder, schema, title, buttonText } = props;
+  const { onFormSubmit, formBuilder, schema, buttonText } = props;
   const { register, handleSubmit, errors } = useForm({
     validationSchema: schema,
   });
 
   const inputs = Object.keys(formBuilder).map((input) => (
-    <div key={input}>
+    <FormGroup key={input}>
       <TextInput
         name={input}
         ref={register}
@@ -17,17 +17,14 @@ const CommonForm = (props) => {
         type={formBuilder[input].type}
       />
       {errors[input] && <TextWarning>{errors[input].message}</TextWarning>}
-    </div>
+    </FormGroup>
   ));
 
   return (
-    <div>
-      <Heading variant="h2">{title}</Heading>
-      <form onSubmit={handleSubmit(onFormSubmit)}>
-        {inputs}
-        <Button type="submit">{buttonText}</Button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit(onFormSubmit)}>
+      {inputs}
+      <Button type="submit">{buttonText}</Button>
+    </form>
   );
 };
 

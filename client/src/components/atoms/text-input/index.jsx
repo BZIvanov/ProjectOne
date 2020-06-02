@@ -9,6 +9,7 @@ const InputCss = styled.input`
   font-size: 1rem;
   border-bottom: ${(props) => '2px solid' + props.theme.palette.b};
   ::placeholder {
+    font-size: 0.9rem;
     color: ${(props) => props.theme.palette.e};
     transition: color 1s ease;
   }

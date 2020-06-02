@@ -4,8 +4,8 @@ import { ThemeProvider } from 'styled-components';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import client from './apolloClient';
 import theme from './theme';
-import { Home, Signup } from './components/pages';
-import { Header, Signin } from './components/organisms';
+import { Home, Signup, Signin } from './components/pages';
+import { Header } from './components/organisms';
 import { GlobalStyles } from './components/atoms';
 
 const App = () => {

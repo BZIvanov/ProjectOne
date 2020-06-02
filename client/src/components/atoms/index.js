@@ -2,6 +2,7 @@ export { default as Link } from './link';
 export { default as NavLink } from './nav-link';
 export { default as AppNav } from './app-nav';
 export { default as Button } from './button';
+export { default as FormGroup } from './form-group';
 export { default as TextInput } from './text-input';
 export { default as NavItems } from './nav-items';
 export { default as NavItem } from './nav-item';
