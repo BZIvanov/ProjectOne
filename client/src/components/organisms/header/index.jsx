@@ -1,6 +1,6 @@
 import React from 'react';
 import { Links } from '../../molecules';
-import { AppNav, FactoryIcon, Link } from '../../atoms';
+import { AppNav, FactoryIcon, Link, withAppWidth } from '../../atoms';
 
 const Header = () => {
   return (
@@ -13,4 +13,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default withAppWidth(Header);

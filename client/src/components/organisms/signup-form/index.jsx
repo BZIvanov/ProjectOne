@@ -1,11 +1,17 @@
 import React from 'react';
 import { useMutation } from '@apollo/react-hooks';
+import styled from 'styled-components';
 import schema from './schema';
 import formBuilder from './formBuilder';
 import { CommonForm } from '../../molecules';
 import { SIGNUP } from './gql';
 
-const Signup = () => {
+const ContentCss = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const SignupForm = () => {
   const [signupUser] = useMutation(SIGNUP);
 
   const handleFormSubmit = (data) => {
@@ -16,7 +22,7 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <ContentCss>
       <CommonForm
         title="Signup form"
         buttonText="Signup"
@@ -24,8 +30,8 @@ const Signup = () => {
         schema={schema}
         onFormSubmit={handleFormSubmit}
       />
-    </div>
+    </ContentCss>
   );
 };
 
-export default Signup;
+export default SignupForm;
