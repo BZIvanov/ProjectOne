@@ -1,6 +1,7 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const jwt = require('jsonwebtoken');
+const morgan = require('morgan');
 const User = require('./models/user');
 const Movie = require('./models/movie');
 
@@ -9,6 +10,10 @@ const Query = require('./resolvers/Query');
 const Mutation = require('./resolvers/Mutation');
 
 const app = express();
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 app.use(async (req, res, next) => {
   let token = req.headers['authorization'];

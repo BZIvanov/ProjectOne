@@ -11,9 +11,13 @@ const SignupForm = () => {
 
   const handleFormSubmit = (data) => {
     const { username, email, password } = data;
-    signupUser({ variables: { username, email, password } }).then((data) => {
-      localStorage.setItem('token', data.data.signup.token);
-    });
+    signupUser({ variables: { username, email, password } })
+      .then((data) => {
+        localStorage.setItem('token', data.data.signup.token);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
