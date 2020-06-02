@@ -18,7 +18,7 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     text-decoration: none;
-    color: ${(props) => props.theme.palette.primary};
+    color: inherit;
   }
 
   button {
