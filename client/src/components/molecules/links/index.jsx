@@ -5,6 +5,9 @@ const Links = () => {
   return (
     <NavItems>
       <NavItem>
+        <NavLink to="/movie/add">Add Movie</NavLink>
+      </NavItem>
+      <NavItem>
         <NavLink to="/signup">Signup</NavLink>
       </NavItem>
       <NavItem>
