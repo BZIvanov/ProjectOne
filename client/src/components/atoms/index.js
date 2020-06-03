@@ -8,6 +8,7 @@ export { default as NavItems } from './nav-items';
 export { default as NavItem } from './nav-item';
 export { default as Heading } from './heading';
 export { default as TextWarning } from './text-warning';
+export { default as PrivateRoute } from './private-route';
 export { default as GlobalStyles } from './global-styles';
 export { default as withAppWidth } from './with-app-width';
 export { default as withFormStyles } from './with-form-styles';
