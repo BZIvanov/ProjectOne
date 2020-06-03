@@ -1,18 +1,20 @@
 import React from 'react';
 import { useMutation } from '@apollo/react-hooks';
+import { withRouter } from 'react-router-dom';
 import schema from './schema';
 import formBuilder from './formBuilder';
 import { CommonForm } from '../../molecules';
 import { withFormStyles, Heading } from '../../atoms';
 import { SIGNIN } from './gql';
 
-const SigninForm = () => {
+const SigninForm = ({ history }) => {
   const [signinUser] = useMutation(SIGNIN);
 
   const handleFormSubmit = (data) => {
     const { email, password } = data;
     signinUser({ variables: { email, password } }).then((data) => {
       localStorage.setItem('token', data.data.signin.token);
+      history.push('/');
     });
   };
 
@@ -30,4 +32,4 @@ const SigninForm = () => {
   );
 };
 
-export default withFormStyles(SigninForm);
+export default withRouter(withFormStyles(SigninForm));

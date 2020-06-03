@@ -10,6 +10,7 @@ const ButtonCss = styled.button`
   border: none;
   border-radius: 1.5rem;
   padding: 0.4rem 2.2rem;
+  outline: none;
   &:hover {
     background-color: ${(props) => props.theme.palette.b};
   }

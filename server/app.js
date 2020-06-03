@@ -17,7 +17,8 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(async (req, res, next) => {
   let token = req.headers['authorization'];
-  if (token) {
+
+  if (token && token.length > 12) {
     token = token.split(' ')[1];
     try {
       const currentUser = await jwt.verify(token, process.env.JWT_SECRET);
