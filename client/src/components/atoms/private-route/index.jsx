@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { UserContext } from '../../../context/user-context';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const [auth, setAuth] = useState(false);
-
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      setAuth(true);
-    }
-  }, []);
+  const { user } = useContext(UserContext);
 
   return (
     <Route
       {...rest}
       render={(props) =>
-        auth ? <Component {...props} /> : <Redirect to="/" />
+        user.isLoggedIn ? <Component {...props} /> : <Redirect to="/" />
       }
     />
   );
