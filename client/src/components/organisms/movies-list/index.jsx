@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { MovieCard } from '../../molecules';
+import { withAppWidth } from '../../atoms';
 import { GET_ALL_MOVIES } from './gql';
 
 const MoviesList = () => {
@@ -16,4 +17,4 @@ const MoviesList = () => {
   return renderData;
 };
 
-export default MoviesList;
+export default withAppWidth(MoviesList);
