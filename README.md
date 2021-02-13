@@ -1,17 +1,9 @@
-## Working with the server
+## Post-Sharing
 
-TODO: Rework this file
+Demo project allowing users to create profiles, posts and also comment or like a post.
 
-### Experienced issues
+## Usage
 
-1. TypeScript complains with import React after installing _react-router-dom_.
+1. server - install the dependencies and run the server
 
-**Fix:** delete node_modules folder and package-lock.json file and then install them back again.
-
-2. When using 2 Material UI elements as parent and child, if the child is in external component file it doesn't inherit the styles.
-
-**Fix:** in the child Material UI element spread them from the props like below:
-
-```javascript
-<GridListTile style={{ ...props.style }}></GridListTile>
-```
+2. client - install the dependencies and run the client

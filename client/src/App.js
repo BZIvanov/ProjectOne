@@ -1,28 +1,26 @@
-import React, { useReducer } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Home, Signup, Signin, AddMovie } from './components/pages';
-import { Header, Signout } from './components/organisms';
-import { GlobalStyles, PrivateRoute } from './components/atoms';
-import { UserContext } from './context/user-context';
-import { reducer, initialState } from './context/user-reducer';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { CssBaseline, Container } from '@material-ui/core';
+import Home from './pages/Home';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Post from './pages/Post';
+import Navigation from './components/Navigation';
+import AuthRoute from './components/AuthRoute';
 
 const App = () => {
-  const [user, dispatch] = useReducer(reducer, initialState);
-
   return (
-    <BrowserRouter>
-      <GlobalStyles />
-      <UserContext.Provider value={{ user, dispatch }}>
-        <Header />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/signin" component={Signin} />
-          <Route path="/signup" component={Signup} />
-          <PrivateRoute path="/movie/add" component={AddMovie} />
-          <Route path="/signout" component={Signout} />
-        </Switch>
-      </UserContext.Provider>
-    </BrowserRouter>
+    <>
+      <CssBaseline />
+      <Container maxWidth='lg' disableGutters>
+        <BrowserRouter>
+          <Navigation />
+          <Route exact path='/' component={Home} />
+          <AuthRoute exact path='/register' component={Register} />
+          <AuthRoute exact path='/login' component={Login} />
+          <Route exact path='/post/:postId' component={Post} />
+        </BrowserRouter>
+      </Container>
+    </>
   );
 };
 
